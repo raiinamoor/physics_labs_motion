@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsndj5oidpmll"]
+
+[ext_resource type="Material" uid="uid://d3nrouknhwf5f" path="res://materials/point_material.tres" id="1_kymnq"]
+[ext_resource type="Material" uid="uid://ckutnbm7hcopy" path="res://materials/outline_material.tres" id="2_p77dx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0d777"]
+resource_local_to_scene = true
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_6lcpm"]
+radius = 0.35
+height = 0.7
+
+[node name="SimulatedBody" type="Node3D"]
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_kymnq")
+mesh = SubResource("SphereMesh_0d777")
+
+[node name="OutlineMesh" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_p77dx")
+mesh = SubResource("SphereMesh_6lcpm")

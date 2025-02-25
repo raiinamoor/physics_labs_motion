@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfvgwo2dk6kbt"]
+
+[ext_resource type="Script" path="res://scripts/camera_pivot.gd" id="1_i0xu3"]
+
+[sub_resource type="Environment" id="Environment_vr4aq"]
+background_mode = 1
+
+[node name="CameraPivot" type="Node3D"]
+script = ExtResource("1_i0xu3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+environment = SubResource("Environment_vr4aq")
+projection = 1
+size = 10.0

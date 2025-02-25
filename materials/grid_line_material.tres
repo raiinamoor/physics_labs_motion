@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://4y8ws703ayaa"]
+
+[ext_resource type="Shader" path="res://materials/grid_shader.gdshader" id="1_gpat6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gpat6")
+shader_parameter/target_position = null
+shader_parameter/max_distance = 2.0

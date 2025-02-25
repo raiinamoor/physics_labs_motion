@@ -1,0 +1,9 @@
+[gd_resource type="TextMesh" load_steps=2 format=3 uid="uid://b5fretblyqj5b"]
+
+[ext_resource type="Material" uid="uid://ddxjih5duttdh" path="res://materials/text_material.tres" id="1_dd0g3"]
+
+[resource]
+resource_local_to_scene = true
+material = ExtResource("1_dd0g3")
+text = "1"
+depth = 0.001

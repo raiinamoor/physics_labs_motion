@@ -1,0 +1,405 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxr8vh76yi2fm"]
+
+[ext_resource type="Script" path="res://scripts/simulation_timer.gd" id="1_pojxw"]
+[ext_resource type="PackedScene" uid="uid://bsndj5oidpmll" path="res://scenes/simulated_body.tscn" id="2_3yea3"]
+[ext_resource type="Script" path="res://scripts/motion_component.gd" id="2_l55fx"]
+[ext_resource type="Script" path="res://scripts/accelerated_motion.gd" id="4_0w4g8"]
+[ext_resource type="PackedScene" uid="uid://jvn64oarwma5" path="res://scenes/grid_visualizer.tscn" id="5_8f1bv"]
+[ext_resource type="PackedScene" uid="uid://b4v8vxh47bbma" path="res://scenes/arrow.tscn" id="5_gu3uf"]
+[ext_resource type="PackedScene" uid="uid://bfvgwo2dk6kbt" path="res://scenes/camera_pivot.tscn" id="6_a4lki"]
+[ext_resource type="Script" path="res://scripts/input_panel.gd" id="7_lwiem"]
+[ext_resource type="Script" path="res://scripts/results_panel.gd" id="9_on1jv"]
+
+[sub_resource type="Resource" id="Resource_n0cs3"]
+script = ExtResource("4_0w4g8")
+initial_coord = Vector3(0, 0, 0)
+acceleration = Vector3(0, 0, 0)
+initial_velocity = Vector3(0, 0, 0)
+
+[node name="World" type="Node3D"]
+
+[node name="SimulationTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+script = ExtResource("1_pojxw")
+
+[node name="SimulatedBody" parent="." instance=ExtResource("2_3yea3")]
+
+[node name="MotionComponent" type="Node" parent="SimulatedBody" node_paths=PackedStringArray("timer", "target", "arrow")]
+script = ExtResource("2_l55fx")
+timer = NodePath("../../SimulationTimer")
+target = NodePath("..")
+motion = SubResource("Resource_n0cs3")
+arrow = NodePath("../Arrow")
+
+[node name="Arrow" parent="SimulatedBody" instance=ExtResource("5_gu3uf")]
+
+[node name="CameraPivot" parent="SimulatedBody" instance=ExtResource("6_a4lki")]
+
+[node name="Grid" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_8f1bv")]
+target = NodePath("../SimulatedBody")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InputPanel" type="Panel" parent="UI"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 536.0
+offset_bottom = 421.0
+script = ExtResource("7_lwiem")
+inputs = {
+"acceleration:x": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/X"),
+"acceleration:y": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/Y"),
+"acceleration:z": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/Z"),
+"initial_coord:x": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/X"),
+"initial_coord:y": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/Y"),
+"initial_coord:z": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/Z"),
+"initial_velocity:x": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/X"),
+"initial_velocity:y": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/Y"),
+"initial_velocity:z": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/Z")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InputPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InputPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="UI/InputPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="LabelX" type="Label" parent="UI/InputPanel/MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.423767
+anchor_right = 0.573991
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelY" type="Label" parent="UI/InputPanel/MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.618834
+anchor_right = 0.769058
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Y"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelZ" type="Label" parent="UI/InputPanel/MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.813901
+anchor_right = 0.964126
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Z"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CoordinateParameter" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/InputPanel/MarginContainer/VBoxContainer/CoordinateParameter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Нач. координата"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer/CoordinateParameter"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="X" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Y" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Z" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="VelocityParameter" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/InputPanel/MarginContainer/VBoxContainer/VelocityParameter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Нач. скорость"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer/VelocityParameter"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="X" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м/с"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Y" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м/с"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Z" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м/с"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="AccelerationParameter" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/InputPanel/MarginContainer/VBoxContainer/AccelerationParameter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ускорение"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer/AccelerationParameter"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="X" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м/с²"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Y" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м/с²"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Z" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer"]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+suffix = "м/с²"
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeParameter" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/InputPanel/MarginContainer/VBoxContainer/TimeParameter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Время"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InputPanel/MarginContainer/VBoxContainer/TimeParameter"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="Time" type="SpinBox" parent="UI/InputPanel/MarginContainer/VBoxContainer/TimeParameter/HBoxContainer"]
+layout_mode = 2
+step = 0.01
+value = 5.0
+suffix = "с"
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="UI/InputPanel/MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+toggle_mode = true
+text = "Начать"
+
+[node name="PauseButton" type="Button" parent="UI/InputPanel/MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+toggle_mode = true
+text = "Пауза"
+
+[node name="ResultsPanel" type="Panel" parent="UI" node_paths=PackedStringArray("time_label", "timer")]
+offset_left = 50.0
+offset_top = 487.0
+offset_right = 536.0
+offset_bottom = 655.0
+script = ExtResource("9_on1jv")
+time_label = NodePath("MarginContainer/VBoxContainer/TimeResult/Value")
+timer = NodePath("../../SimulationTimer")
+displayed_properties = {
+NodePath("MarginContainer/VBoxContainer/VelocityResult/Value"): &"_linear_velocity",
+NodePath("MarginContainer/VBoxContainer/DistanceResult/Value"): &"_distance",
+NodePath("MarginContainer/VBoxContainer/CoordResult/Value"): &"_coordinate"
+}
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/ResultsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ResultsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CoordResult" type="Control" parent="UI/ResultsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/CoordResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Координата"
+
+[node name="Value" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/CoordResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VelocityResult" type="Control" parent="UI/ResultsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/VelocityResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Скорость"
+
+[node name="Value" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/VelocityResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DistanceResult" type="Control" parent="UI/ResultsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/DistanceResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Путь"
+
+[node name="Value" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/DistanceResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeResult" type="Control" parent="UI/ResultsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/TimeResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Истекшее время"
+
+[node name="Value" type="Label" parent="UI/ResultsPanel/MarginContainer/VBoxContainer/TimeResult"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="simulation_started" from="UI/InputPanel" to="SimulatedBody/MotionComponent" method="set_state"]
+[connection signal="simulation_started" from="UI/InputPanel" to="UI/ResultsPanel" method="set_state"]
+[connection signal="simulation_stopped" from="UI/InputPanel" to="SimulationTimer" method="reset"]
+[connection signal="timer_updated" from="UI/InputPanel" to="SimulationTimer" method="start_timer"]
+[connection signal="value_changed" from="UI/InputPanel/MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/Z" to="SimulatedBody/CameraPivot" method="_on_z_value_changed"]
+[connection signal="value_changed" from="UI/InputPanel/MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/Z" to="SimulatedBody/CameraPivot" method="_on_z_value_changed"]
+[connection signal="value_changed" from="UI/InputPanel/MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/Z" to="SimulatedBody/CameraPivot" method="_on_z_value_changed"]
+[connection signal="toggled" from="UI/InputPanel/MarginContainer/StartButton" to="UI/InputPanel" method="toggle_simulation"]
+[connection signal="toggled" from="UI/InputPanel/MarginContainer/PauseButton" to="SimulationTimer" method="pause"]

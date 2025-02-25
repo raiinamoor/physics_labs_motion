@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ddxjih5duttdh"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 1
+transparency = 1
+shading_mode = 0
+billboard_mode = 1

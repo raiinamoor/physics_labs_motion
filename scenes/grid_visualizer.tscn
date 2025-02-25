@@ -1,0 +1,222 @@
+[gd_scene load_steps=10 format=3 uid="uid://jvn64oarwma5"]
+
+[ext_resource type="Script" path="res://scripts/grid_visualizer.gd" id="1_lekoq"]
+[ext_resource type="CylinderMesh" uid="uid://dntj6s8m32ron" path="res://grid_line_mesh.tres" id="1_nsawa"]
+[ext_resource type="Material" uid="uid://4y8ws703ayaa" path="res://materials/grid_line_material.tres" id="2_gh5ui"]
+[ext_resource type="Material" uid="uid://ddxjih5duttdh" path="res://materials/text_material.tres" id="3_eouvs"]
+
+[sub_resource type="TextMesh" id="TextMesh_i4xed"]
+resource_local_to_scene = true
+material = ExtResource("3_eouvs")
+text = "1"
+depth = 0.001
+
+[sub_resource type="TextMesh" id="TextMesh_seo7u"]
+resource_local_to_scene = true
+material = ExtResource("3_eouvs")
+text = "1"
+depth = 0.001
+
+[sub_resource type="TextMesh" id="TextMesh_mpmk1"]
+resource_local_to_scene = true
+material = ExtResource("3_eouvs")
+text = "1"
+depth = 0.001
+
+[sub_resource type="TextMesh" id="TextMesh_w0fvh"]
+resource_local_to_scene = true
+material = ExtResource("3_eouvs")
+text = "1"
+depth = 0.001
+
+[sub_resource type="TextMesh" id="TextMesh_cju1b"]
+resource_local_to_scene = true
+material = ExtResource("3_eouvs")
+text = "1"
+depth = 0.001
+
+[node name="Grid" type="Node3D"]
+script = ExtResource("1_lekoq")
+material = ExtResource("2_gh5ui")
+
+[node name="XY" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XY"]
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 8.74228e-08, 2, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.37114e-08, 1, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.37114e-08, -1, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="XY"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.74228e-08, -2, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="XZ" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XZ"]
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 8.74228e-08, 2, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.37114e-08, 1, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.37114e-08, -1, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="XZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.74228e-08, -2, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="YZ" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, -1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="YZ"]
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 8.74228e-08, 2, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.37114e-08, 1, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.37114e-08, -1, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="YZ"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.74228e-08, -2, 0)
+mesh = ExtResource("1_nsawa")
+skeleton = NodePath("../../..")
+
+[node name="Numbers" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Numbers" groups=["number_meshes"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = SubResource("TextMesh_i4xed")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Numbers" groups=["number_meshes"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("TextMesh_seo7u")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Numbers" groups=["number_meshes"]]
+mesh = SubResource("TextMesh_mpmk1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Numbers" groups=["number_meshes"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("TextMesh_w0fvh")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Numbers" groups=["number_meshes"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("TextMesh_cju1b")
+skeleton = NodePath("../..")

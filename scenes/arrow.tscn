@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4v8vxh47bbma"]
+
+[ext_resource type="Material" uid="uid://bfndmioe5qwrh" path="res://materials/arrow_material.tres" id="1_f1dl7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yi1l5"]
+material = ExtResource("1_f1dl7")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_flitv"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.2
+cap_top = false
+
+[node name="Arrow" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, -0.4)
+mesh = SubResource("CylinderMesh_yi1l5")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, -0.9)
+material_override = ExtResource("1_f1dl7")
+mesh = SubResource("CylinderMesh_flitv")
