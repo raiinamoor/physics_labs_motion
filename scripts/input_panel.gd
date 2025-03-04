@@ -14,7 +14,7 @@ const BUTTON_STOP_TEXT = "Прервать"
 
 var motion_types: Dictionary = {
 	"AcceleratedMotion": AcceleratedMotion,
-	"CircularMotion": AcceleratedMotion # TODO change type to circular motion when implemented
+	"CircularMotion": CircularMotion
 }
 
 @onready var time_input: SpinBox = $MarginContainer/VBoxContainer/TimeParameter/HBoxContainer/Time

@@ -6,8 +6,15 @@ extends Panel
 @export var timer: Timer
 @export var displayed_properties: Dictionary = {}
 
-var motion: Motion = Motion.new()
+@export_enum("AcceleratedMotion", "CircularMotion") var motion_type: String = "AcceleratedMotion"
 
+var motion_types: Dictionary = {
+	"AcceleratedMotion": AcceleratedMotion,
+	"CircularMotion": CircularMotion
+}
+#var motion:
+	#get: return motion_types[motion_type] as GDScript
+@onready var motion = (motion_types[motion_type] as GDScript).new()
 
 func _process(delta: float) -> void:
 	for key_label: NodePath in displayed_properties:
@@ -15,7 +22,6 @@ func _process(delta: float) -> void:
 		var value_name = displayed_properties[key_label]
 		var value = motion.call(value_name, timer.elapsed_time)
 		label.text = "{v}".format({"v": value})
-		var vec: Vector2 = Vector2.ZERO
 	
 	time_label.text = "{t}".format({"t": timer.elapsed_time})
 
