@@ -21,10 +21,8 @@ func _process(_delta: float) -> void:
 		if motion._linear_velocity(t).length() > 0:
 			var look_target = motion._coordinate(t) + motion._linear_velocity(t)
 			# check to avoid "look_at() failed" error
-			if look_target.angle_to(Vector3.UP) < 0.01:
-				arrow.rotation_degrees = Vector3(90, 0, 0)
-			else:
-				arrow.look_at(look_target)
+			var up_vector = Vector3.RIGHT if look_target.angle_to(Vector3.UP) < 0.05 else Vector3.UP
+			arrow.look_at(look_target, up_vector)
 			scale_value = motion._linear_velocity(t).length()
 		else:
 			scale_value = 0.1
