@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://jvn64oarwma5"]
 
-[ext_resource type="Script" path="res://scripts/grid_visualizer.gd" id="1_lekoq"]
+[ext_resource type="Script" uid="uid://j6fdriac6gpr" path="res://scripts/grid_visualizer.gd" id="1_lekoq"]
 [ext_resource type="CylinderMesh" uid="uid://dntj6s8m32ron" path="res://grid_line_mesh.tres" id="1_nsawa"]
 [ext_resource type="Material" uid="uid://4y8ws703ayaa" path="res://materials/grid_line_material.tres" id="2_gh5ui"]
 [ext_resource type="Material" uid="uid://ddxjih5duttdh" path="res://materials/text_material.tres" id="3_eouvs"]

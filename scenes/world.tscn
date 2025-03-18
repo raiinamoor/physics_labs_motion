@@ -1,14 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://cxr8vh76yi2fm"]
 
-[ext_resource type="Script" path="res://scripts/simulation_timer.gd" id="1_pojxw"]
+[ext_resource type="Script" uid="uid://dqhhkiv58h61t" path="res://scripts/simulation_timer.gd" id="1_pojxw"]
+[ext_resource type="Script" uid="uid://b0tus4d4hqdl3" path="res://scripts/simulation_root.gd" id="1_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://bsndj5oidpmll" path="res://scenes/simulated_body.tscn" id="2_3yea3"]
-[ext_resource type="Script" path="res://scripts/motion_component.gd" id="2_l55fx"]
-[ext_resource type="Script" path="res://scripts/accelerated_motion.gd" id="4_0w4g8"]
+[ext_resource type="Script" uid="uid://c1s1nwxw6h3h0" path="res://scripts/motion_component.gd" id="2_l55fx"]
+[ext_resource type="Script" uid="uid://c0o5j5gj0svi1" path="res://scripts/motion_types/accelerated_motion.gd" id="4_0w4g8"]
 [ext_resource type="PackedScene" uid="uid://jvn64oarwma5" path="res://scenes/grid_visualizer.tscn" id="5_8f1bv"]
 [ext_resource type="PackedScene" uid="uid://b4v8vxh47bbma" path="res://scenes/arrow.tscn" id="5_gu3uf"]
 [ext_resource type="PackedScene" uid="uid://bfvgwo2dk6kbt" path="res://scenes/camera_pivot.tscn" id="6_a4lki"]
-[ext_resource type="Script" path="res://scripts/input_panel.gd" id="7_lwiem"]
-[ext_resource type="Script" path="res://scripts/results_panel.gd" id="9_on1jv"]
+[ext_resource type="Script" uid="uid://610ql0iqxxyj" path="res://scripts/input_panel.gd" id="7_lwiem"]
+[ext_resource type="Script" uid="uid://biyaj262r27qg" path="res://scripts/results_panel.gd" id="9_on1jv"]
 
 [sub_resource type="Resource" id="Resource_n0cs3"]
 script = ExtResource("4_0w4g8")
