@@ -12,7 +12,7 @@ var prev_pos: Vector3 = Vector3.ZERO
 
 
 func _process(_delta: float) -> void:
-	var t: float = timer.elapsed_time
+	var t: float = timer.elapsed_time_with_delay
 	target.position = motion._coordinate(t)
 	
 	if arrow != null:

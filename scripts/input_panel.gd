@@ -10,6 +10,7 @@ const BUTTON_START_TEXT = "Начать"
 const BUTTON_STOP_TEXT = "Прервать"
 
 @export var inputs: Dictionary[StringName, NodePath]
+@export var delay_input: SpinBox
 
 @onready var time_input: SpinBox = $MarginContainer/VBoxContainer/TimeParameter/HBoxContainer/Time
 @onready var start_button: Button = $MarginContainer/StartButton
@@ -21,7 +22,10 @@ func toggle_simulation(turned_on: bool) -> void:
 		start_button.text = BUTTON_STOP_TEXT
 		
 		simulation_started.emit(new_state)
-		timer_updated.emit(time_input.value)
+		var delay = 0
+		if delay_input:
+			delay = delay_input.value
+		timer_updated.emit(time_input.value, delay)
 	else:
 		start_button.text = BUTTON_START_TEXT
 		
