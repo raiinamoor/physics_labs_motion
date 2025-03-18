@@ -49,17 +49,17 @@ offset_top = 50.0
 offset_right = 536.0
 offset_bottom = 421.0
 script = ExtResource("7_lwiem")
-inputs = {
-"acceleration:x": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/X"),
-"acceleration:y": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/Y"),
-"acceleration:z": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/Z"),
-"initial_coord:x": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/X"),
-"initial_coord:y": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/Y"),
-"initial_coord:z": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/Z"),
-"initial_velocity:x": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/X"),
-"initial_velocity:y": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/Y"),
-"initial_velocity:z": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/Z")
-}
+inputs = Dictionary[StringName, NodePath]({
+&"acceleration:x": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/X"),
+&"acceleration:y": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/Y"),
+&"acceleration:z": NodePath("MarginContainer/VBoxContainer/AccelerationParameter/HBoxContainer/Z"),
+&"initial_coord:x": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/X"),
+&"initial_coord:y": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/Y"),
+&"initial_coord:z": NodePath("MarginContainer/VBoxContainer/CoordinateParameter/HBoxContainer/Z"),
+&"initial_velocity:x": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/X"),
+&"initial_velocity:y": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/Y"),
+&"initial_velocity:z": NodePath("MarginContainer/VBoxContainer/VelocityParameter/HBoxContainer/Z")
+})
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/InputPanel"]
 layout_mode = 1
@@ -277,11 +277,11 @@ offset_bottom = 655.0
 script = ExtResource("9_on1jv")
 time_label = NodePath("MarginContainer/VBoxContainer/TimeResult/Value")
 timer = NodePath("../../SimulationTimer")
-displayed_properties = {
+displayed_properties = Dictionary[NodePath, StringName]({
 NodePath("MarginContainer/VBoxContainer/VelocityResult/Value"): &"_linear_velocity",
 NodePath("MarginContainer/VBoxContainer/DistanceResult/Value"): &"_distance",
 NodePath("MarginContainer/VBoxContainer/CoordResult/Value"): &"_coordinate"
-}
+})
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/ResultsPanel"]

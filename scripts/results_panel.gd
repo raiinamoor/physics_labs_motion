@@ -4,7 +4,7 @@ extends Panel
 @export var time_label: Label
 
 @export var timer: Timer
-@export var displayed_properties: Dictionary = {}
+@export var displayed_properties: Dictionary[NodePath, StringName] = {}
 
 @onready var motion
 

@@ -9,7 +9,7 @@ signal timer_updated(wait_time: float)
 const BUTTON_START_TEXT = "Начать"
 const BUTTON_STOP_TEXT = "Прервать"
 
-@export var inputs: Dictionary
+@export var inputs: Dictionary[StringName, NodePath]
 
 @onready var time_input: SpinBox = $MarginContainer/VBoxContainer/TimeParameter/HBoxContainer/Time
 @onready var start_button: Button = $MarginContainer/StartButton
