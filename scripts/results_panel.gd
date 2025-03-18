@@ -6,15 +6,12 @@ extends Panel
 @export var timer: Timer
 @export var displayed_properties: Dictionary = {}
 
-@export_enum("AcceleratedMotion", "CircularMotion") var motion_type: String = "AcceleratedMotion"
+@onready var motion
 
-var motion_types: Dictionary = {
-	"AcceleratedMotion": AcceleratedMotion,
-	"CircularMotion": CircularMotion
-}
-#var motion:
-	#get: return motion_types[motion_type] as GDScript
-@onready var motion = (motion_types[motion_type] as GDScript).new()
+func _ready() -> void:
+	await owner.ready
+	motion = owner.selected_type.new()
+
 
 func _process(delta: float) -> void:
 	for key_label: NodePath in displayed_properties:

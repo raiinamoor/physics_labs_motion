@@ -10,12 +10,6 @@ const BUTTON_START_TEXT = "Начать"
 const BUTTON_STOP_TEXT = "Прервать"
 
 @export var inputs: Dictionary
-@export_enum("AcceleratedMotion", "CircularMotion") var motion_type: String = "AcceleratedMotion"
-
-var motion_types: Dictionary = {
-	"AcceleratedMotion": AcceleratedMotion,
-	"CircularMotion": CircularMotion
-}
 
 @onready var time_input: SpinBox = $MarginContainer/VBoxContainer/TimeParameter/HBoxContainer/Time
 @onready var start_button: Button = $MarginContainer/StartButton
@@ -39,7 +33,7 @@ func pause_simulation(is_paused: bool):
 
 
 func get_motion_from_inputs() -> Motion:
-	var motion = (motion_types[motion_type] as GDScript).new()
+	var motion = owner.selected_type.new()
 	for property_key: String in inputs:
 		var node_path = inputs[property_key]
 		var input: SpinBox = get_node(node_path)
