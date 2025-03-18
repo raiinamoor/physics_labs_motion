@@ -8,8 +8,6 @@ extends Node
 
 @export var arrow: Node3D
 
-var prev_pos: Vector3 = Vector3.ZERO
-
 
 func _process(_delta: float) -> void:
 	var t: float = timer.elapsed_time_with_delay
@@ -27,14 +25,6 @@ func _process(_delta: float) -> void:
 		else:
 			scale_value = 0.1
 		arrow.scale.z = scale_value
-	
-	if motion is AcceleratedMotion:
-		var diff = target.global_position - prev_pos
-		motion.accumulated_distance += diff.length()
-		
-		prev_pos = target.global_position
-
 
 func set_state(new_state: Motion):
 	motion = new_state
-	prev_pos = Vector3.ZERO
